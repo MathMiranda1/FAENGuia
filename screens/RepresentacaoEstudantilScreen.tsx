@@ -426,7 +426,7 @@ const RepresentacaoEstudantilScreen: React.FC = () => {
     <ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
       <View style={styles.darkOverlay} />
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>Entidades Estudantis</Text>
+        <Text style={styles.title}>Entidades e Associações Estudantis</Text>
 
         {loading ? (
           <Text style={styles.loadingText}>Carregando...</Text>

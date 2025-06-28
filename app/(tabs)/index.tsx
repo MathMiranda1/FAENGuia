@@ -231,7 +231,7 @@ export default function App() {
           <Stack.Screen
             name="RepresentacaoEstudantil"
             component={RepresentacaoEstudantil}
-            options={{ title: 'Entidades Estudantis' }}
+            options={{ title: 'Entidades e Associações Estudantis' }}
           />
           <Stack.Screen
             name="AtendimentosAuxilios"

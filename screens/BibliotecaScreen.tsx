@@ -79,7 +79,6 @@ const novosCards: StaticCardItem[] = [
         linkText: 'Ver Detalhes no Portal CAPES',
         isSpecialInfo: true
     },
-    { descricao: 'Em Breve...', isFullWidth: true },
 ];
 
 const BibliotecaScreen: React.FC = () => {
