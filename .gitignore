@@ -37,11 +37,6 @@ yarn-error.*
 
 app-example
 
-# Dependências
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 # Arquivos de ambiente e configuração
 .env
 .env.local
@@ -56,15 +51,18 @@ secrets.json
 .secrets
 credentials.json
 
+# Firebase - ESPECÍFICO
+google-services.json
+GoogleService-Info.plist
+firebase-config.js
+.firebase/
+firebase-debug.log
+
 # Arquivos de IDE
 .vscode/settings.json
 .idea/
 *.swp
 *.swo
-
-# Sistema operacional
-.DS_Store
-Thumbs.db
 
 # Logs
 logs/
@@ -72,21 +70,8 @@ logs/
 
 # Cache
 .cache/
-dist/
 build/
 
 # Arquivos temporários
 tmp/
 temp/
-
-# Firebase
-google-services.json
-GoogleService-Info.plist
-firebase-config.js
-.firebase/
-firebase-debug.log
-
-# Chaves e configurações
-*.json
-!package.json
-!package-lock.json
