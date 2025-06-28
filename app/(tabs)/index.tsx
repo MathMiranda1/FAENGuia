@@ -1,74 +1,250 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React from 'react';
+import 'react-native-url-polyfill/auto'; // <<< COLOQUE AQUI, BEM NO TOPO!
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import HomeScreen from '@/screens/HomeScreen';
+import ProfileScreen from '@/screens/ProfileScreen';
+import EstruturaFaenScreen from '@/screens/EstruturaFaenScreen';
+import EstruturaCurricularScreen from '@/screens/EstruturaCurricularScreen';
+import ContatosInstitucionaisScreen from '@/screens/ContatosInstitucionaisScreen';
+import HorasComplementares from '@/screens/HorasComplementaresScreen';
+import Projetos from '@/screens/ProjetosScreen';
+import RepresentacaoEstudantil from '@/screens/RepresentacaoEstudantilScreen';
+import AtendimentosAuxilios from '@/screens/AtendimentosEAuxiliosScreen';
+import PosGraduacoesIntercambios from '@/screens/PosGraduacoesEIntercambiosScreen';
+import SplashScreen from '@/screens/SplashScreen';
+import LoginScreen from '@/screens/LoginScreen';
+import UERNScreen from '@/screens/UERNScreen';
+import CorpoDocente from '@/screens/CorpoDocenteScreen';
+import Orientadoras from '@/screens/OrientadoresScreen';
+import AmbulatorioScreen from '@/screens/AmbulatorioScreen';
+import CadastroScreen from '@/screens/CadastroScreen';
+import { AdminProvider } from '@/app/lib/AdminContext';
+import SearchScreen from '@/screens/SearchScreen';
+import SobreScreen from '@/screens/SobreScreen';
+import BibliotecaScreen from '@/screens/BibliotecaScreen';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function HomeScreen() {
+export type RootStackParamList = {
+  Splash: undefined;
+  Login: undefined;
+  Home: undefined;
+  HomeTab: undefined; // Nome do Tab Navigator ajustado
+  Search: undefined;
+  Sobre: undefined;
+  Profile: undefined;
+  EstruturaFaen: undefined;
+  EstruturaCurricular: undefined;
+  ContatosInstitucionais: undefined;
+  RegimentosSimplificados: undefined;
+  CorpoDocente: undefined;
+  HorasComplementares: undefined;
+  Projetos: undefined;
+  RepresentacaoEstudantil: undefined;
+  AtendimentosAuxilios: undefined;
+  PosGraduacoesIntercambios: undefined;
+  UERN: undefined;
+  Orientadoras: undefined;
+  Ambulatorio: undefined;
+  Cadastro: undefined;
+  Biblioteca: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<RootStackParamList>();
+
+// Bottom Tab Navigator para Home e Profile
+function HomeTabs() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'HomeTab') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Profile') {
+            iconName = focused ? 'person' : 'person-outline';
+          } else if (route.name === 'Search') {
+            iconName = focused ? 'search' : 'search-outline';
+          } else if (route.name === 'Sobre') {
+            iconName = focused ? 'information-circle' : 'information-circle-outline';
+          }
+
+          return <Ionicons name={iconName!} size={size} color={color} />;
+        },
+        headerStyle: {
+          backgroundColor: '#FFFFFF',
+          height: 60,
+        },
+        headerStatusBarHeight: 5,
+        headerTintColor: '#00008B',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize: 20,
+        },
+        tabBarStyle: {
+          backgroundColor: 'white',
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 2
+        },
+        tabBarIconStyle: {
+          marginTop: 0,
+          marginBottom: 2
+        },
+        tabBarLabelStyle: {
+          fontSize: 10,
+          marginBottom: 2,
+          marginTop: 0,
+          paddingHorizontal: 2
+        },
+        tabBarActiveTintColor: '#00008B',
+        tabBarInactiveTintColor: 'black',
+      })}
+    >
+      <Tab.Screen
+        name="HomeTab"
+        component={HomeScreen}
+        options={{ title: 'Início', headerShown: false }}
+      />
+      <Tab.Screen
+        name="Sobre"
+        component={SobreScreen}
+        options={{ title: 'Sobre' }}
+
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{ title: 'Buscar' }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ title: 'Perfil' }}
+      />
+    </Tab.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+
+// Stack Navigator principal
+export default function App() {
+  return (
+    <AdminProvider>
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#FFFFFF',
+              height: 60,
+            },
+            headerStatusBarHeight: 5,
+            headerTintColor: '#00008B',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 20,
+            },
+          }}
+        >
+          {/* Telas fora da barra inferior */}
+          <Stack.Screen
+            name="Splash"
+            component={SplashScreen}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ title: 'Login', headerShown: false, presentation: 'modal' }}
+          />
+
+          {/* Stack chama o Tab Navigator como Home */}
+          <Stack.Screen
+            name="Home"
+            component={HomeTabs} // Nome externo continua Home
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="Cadastro"
+            component={CadastroScreen}
+            options={{ title: 'Cadastro', headerShown: false, presentation: 'modal' }}
+          />
+
+          {/* Telas restantes */}
+          <Stack.Screen
+            name="EstruturaFaen"
+            component={EstruturaFaenScreen}
+            options={{ title: 'FAEN' }}
+          />
+          <Stack.Screen
+            name="UERN"
+            component={UERNScreen}
+            options={{ title: 'UERN' }}
+          />
+          <Stack.Screen
+            name="EstruturaCurricular"
+            component={EstruturaCurricularScreen}
+            options={{ title: 'Estrutura Curricular e Documentos' }}
+          />
+          <Stack.Screen
+            name="ContatosInstitucionais"
+            component={ContatosInstitucionaisScreen}
+            options={{ title: 'Contatos Institucionais' }}
+          />
+          <Stack.Screen
+            name="Ambulatorio"
+            component={AmbulatorioScreen}
+            options={{ title: 'Ambulatório' }}
+          />
+          <Stack.Screen
+            name="CorpoDocente"
+            component={CorpoDocente}
+            options={{ title: 'Corpo Docente' }}
+          />
+          <Stack.Screen
+            name="Orientadoras"
+            component={Orientadoras}
+            options={{ title: 'Orientadores Acadêmicos' }}
+          />
+          <Stack.Screen
+            name="Biblioteca"
+            component={BibliotecaScreen}
+            options={{ title: 'Biblioteca' }}
+          />
+          <Stack.Screen
+            name="HorasComplementares"
+            component={HorasComplementares}
+            options={{ title: 'Atividades Complementares' }}
+          />
+          <Stack.Screen
+            name="Projetos"
+            component={Projetos}
+            options={{ title: 'Projetos' }}
+          />
+          <Stack.Screen
+            name="RepresentacaoEstudantil"
+            component={RepresentacaoEstudantil}
+            options={{ title: 'Entidades Estudantis' }}
+          />
+          <Stack.Screen
+            name="AtendimentosAuxilios"
+            component={AtendimentosAuxilios}
+            options={{ title: 'Atendimentos e Auxílios' }}
+          />
+          <Stack.Screen
+            name="PosGraduacoesIntercambios"
+            component={PosGraduacoesIntercambios}
+            options={{ title: 'Pós-Graduações e Intercâmbios' }}
+          />
+        </Stack.Navigator>
+      </SafeAreaView>
+    </AdminProvider >
+  );
+}

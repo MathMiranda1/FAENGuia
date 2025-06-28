@@ -1,21 +1,53 @@
 {
   "expo": {
-    "name": "GuiaUERN",
-    "slug": "GuiaUERN",
+    "name": "Guia FAEN",
+    "slug": "enfermagemapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon2.png",
     "scheme": "myapp",
+    "splash": {
+      "image": "./assets/images/splash2.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F5EEE8",
+      "backgroundImage": "./assets/images/background2.png"
+    },
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.matheuscm1.enfermangemuern",
+      "infoPlist": { 
+        "LSApplicationQueriesSchemes": [
+          "whatsapp",
+          "instagram", 
+          "fb",
+          "mailto" 
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/images/adaptive-icon2.png",
+        "backgroundColor": "#ffffff",
+        "windowSoftInputMode": "adjustResize"
+      },
+      "package": "com.matheuscm1.enfermagemapp",
+      "queries": [
+        {
+          "package": "com.whatsapp"
+        },
+        {
+          "intent": [
+            {
+              "action": "android.intent.action.VIEW",
+              "data": {
+                "scheme": "https"
+              }
+            }
+          ]
+        }
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -27,15 +59,34 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash-icon2.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#eef3f8"
         }
-      ]
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ],
+      "expo-secure-store",
+      "expo-video"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b0160aa1-923d-4ad7-8705-2f967c769973"
+      }
+    },
+    "owner": "matheuscm1"
   }
 }
