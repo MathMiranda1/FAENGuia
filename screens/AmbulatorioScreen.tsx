@@ -130,7 +130,7 @@ const AmbulatorioScreen: React.FC = () => {
             }
 
             const img = result.assets[0];
-            const base64 = await FileSystem.readAsStringAsync(img.uri, { encoding: FileSystem.EncodingType.Base64 });
+            const base64 = await FileSystem.readAsStringAsync(img.uri, { encoding: 'base64' });
             const filePath = `${Date.now()}-${img.uri.split('/').pop()}`;
 
             const { error: uploadError } = await supabase.storage
@@ -863,7 +863,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
         color: '#00008B',
-    },    
+    },
     vaccineItem: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -908,7 +908,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         marginTop: 10,
-    },    
+    },
     cardImage: {
         width: 80,
         height: 80,

@@ -142,7 +142,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       const img = result.assets[0];
       console.log('Arquivo selecionado:', img);
 
-      const base64 = await FileSystem.readAsStringAsync(img.uri, { encoding: FileSystem.EncodingType.Base64 });
+      const base64 = await FileSystem.readAsStringAsync(img.uri, { encoding: 'base64' });
       const filePath = `${user.id}/${Date.now()}.${img.uri.split('.').pop() || 'jpeg'}`;
       const contentType = img.mimeType || 'image/jpeg';
 

@@ -8,7 +8,6 @@ const SobreScreen: React.FC = () => {
       style={styles.background}
     >
       <View style={styles.darkOverlay} />
-
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>Sobre</Text>
         <Text style={styles.text}>
@@ -16,23 +15,31 @@ const SobreScreen: React.FC = () => {
           "Desbravando caminhos para uma formação crítica em enfermagem", sob a supervisão
           das professoras Ana Karinne de Moura Saraiva e Maria Carmélia Sales do
           Amaral, e destina-se a você, aluno/aluna da Faen/Uern.
-
           {'\n\n'}O Projeto "Desbravando caminhos para uma formação crítica em
           enfermagem" ou
           mais conhecido como Desbravadores é um dos três projetos de ensinos da Faen.
-
           {'\n\n'}Têm como objetivo identificar as dificuldades e necessidades dos alunos
           da FAEN em permanecer no ensino superior e assim construir materiais
           que contribuam para a resolutividade desses problemas, como esse guia!
         </Text>
-
         <Text style={styles.subtitle}>Autoria:</Text>
-        
+
         <View style={styles.listContainer}>
           <Text style={styles.listItem}>📌 Desenvolvedor do Aplicativo: Matheus Cardoso de Miranda</Text>
           <Text style={styles.listItem}>📌 Idealização: Aparecida Inez Diniz de Morais</Text>
           <Text style={styles.listItem}>📌 Concepção: Anabel Zuleide Marcelino Pereira, Aparecida Inez Diniz de Morais, Hércules Bruno Gomes Silva, Amanda Kelly Jales Ezequiel, Ana Carolina de Lima Sales, Mailton Alves de Mendonça</Text>
           <Text style={styles.listItem}>📌 Orientação e Revisão: Ana Karinne de Moura Saraiva e Maria Carmélia Sales do Amaral</Text>
+        </View>
+
+        {/* Nova seção de Aviso de Isenção de Responsabilidade */}
+        <View style={styles.disclaimerContainer}>
+          <View style={styles.disclaimerHeader}>
+            <Text style={styles.warningIcon}>⚠️</Text>
+            <Text style={styles.disclaimerTitle}>Aviso de Isenção de Responsabilidade</Text>
+          </View>
+          <Text style={styles.disclaimerText}>
+            O aplicativo "Guia FAEN" é uma ferramenta não oficial, criada de forma independente por Matheus Cardoso de Miranda para facilitar o acesso a informações públicas para os estudantes de Enfermagem da UERN.
+          </Text>
         </View>
 
         {/* Adicionando o logo no final */}
@@ -89,7 +96,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   listContainer: {
-    marginBottom: -10,
+    marginBottom: 20,
   },
   listItem: {
     fontSize: 16,
@@ -97,6 +104,35 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingLeft: 10,
     fontWeight: 'bold',
+  },
+  disclaimerContainer: {
+    backgroundColor: '#fff3cd',
+    borderColor: '#ffc107',
+    borderWidth: 1,
+    borderRadius: 8,
+    padding: 15,
+    marginBottom: 20,
+  },
+  disclaimerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  warningIcon: {
+    fontSize: 20,
+    marginRight: 8,
+  },
+  disclaimerTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#856404',
+    flex: 1,
+  },
+  disclaimerText: {
+    fontSize: 14,
+    color: '#856404',
+    textAlign: 'justify',
+    lineHeight: 20,
   },
   logoContainer: {
     alignItems: 'center',

@@ -10,7 +10,7 @@
       "image": "./assets/images/splash2.png",
       "resizeMode": "contain",
       "backgroundColor": "#F5EEE8",
-      "backgroundImage": "./assets/images/background2.png"
+      "backgroundImage": "./assets/images/background2.jpg"
     },
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

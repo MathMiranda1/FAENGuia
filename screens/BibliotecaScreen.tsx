@@ -206,7 +206,7 @@ const BibliotecaScreen: React.FC = () => {
 
             const img = result.assets[0];
             // --- Lógica de Upload (EXISTENTE - Ok) ---
-            const base64 = await FileSystem.readAsStringAsync(img.uri, { encoding: FileSystem.EncodingType.Base64 });
+            const base64 = await FileSystem.readAsStringAsync(img.uri, { encoding: 'base64' });
             const filePath = `${Date.now()}-${img.uri.split('/').pop()}`;
             const { error: uploadError } = await supabase.storage.from('images').upload(filePath, decode(base64), { contentType: img.type });
             if (uploadError) { /* ... handle error ... */ return; }
